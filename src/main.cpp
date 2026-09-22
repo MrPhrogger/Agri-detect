@@ -2,8 +2,7 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-#define MQ2 34
-#define RED 13
+#define MQ5 34
 
 void sendUptime();
 
@@ -16,8 +15,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 void setup()
 {
   Serial.begin(115200);
-  pinMode(MQ2, INPUT);
-  pinMode(RED, OUTPUT);
+  pinMode(MQ5, INPUT);
 
   lcd.init();
   lcd.backlight();
@@ -47,12 +45,10 @@ void sendUptime()
 
   if (sensorValue < 500)
   {
-    digitalWrite(RED, HIGH);
     lcd.print("Gaz detected    "); 
   }
   else
   {
-    digitalWrite(RED, LOW);
     lcd.print("Normal air qlty "); 
   }
 }

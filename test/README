@@ -1,11 +1,43 @@
+GAS SENSOR MONITOR (ESP32 + MQ5 + LCD)
 
-This directory is intended for PlatformIO Test Runner and project tests.
+Early-stage embedded project: reads gas concentration from an analog sensor
+and displays air quality status on a 16x2 I2C LCD.
 
-Unit Testing is a software testing method by which individual units of
-source code, sets of one or more MCU program modules together with associated
-control data, usage procedures, and operating procedures, are tested to
-determine whether they are fit for use. Unit testing finds problems early
-in the development cycle.
+This is a first commit - a minimal "read input, show output" version, meant
+as a base to build on (thresholds, calibration, alerts, etc. will come
+later).
 
-More information about PlatformIO Unit Testing:
-- https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+WHAT IT DOES
+- Polls the gas sensor every 1 second (non-blocking, via millis())
+- Prints the raw analog reading to Serial (115200 baud) for debugging
+- Shows "Gaz detected" or "Normal air qlty" on the LCD based on a fixed
+  threshold
+
+HARDWARE
+- MQ5 gas sensor  -> Analog pin 34
+- LCD (I2C, 16x2) -> I2C bus, address 0x27
+
+HOW THE THRESHOLD WORKS
+analogRead() returns a raw value (0-4095 on ESP32's 12-bit ADC). The code
+currently treats anything below 500 as "gas detected." This is a
+placeholder - MQ-series sensors need a warm-up period (usually 24-48h for
+first use, ~1-2 min per power-on afterward) and ideally a calibrated
+baseline in clean air before this threshold means much.
+
+SETUP
+1. Wire the components as described above.
+2. Install the LiquidCrystal_I2C library (via PlatformIO or Arduino Library
+   Manager).
+3. Flash the code to your ESP32.
+4. Open Serial Monitor at 115200 baud to watch raw sensor values.
+5. If the LCD shows nothing, confirm the I2C address (0x27 is common, but
+   run an I2C scanner sketch if unsure) and check SDA/SCL wiring.
+
+KNOWN LIMITATIONS / NEXT STEPS
+- Fixed threshold (500) isn't calibrated - should be tuned per sensor and
+  environment
+- No sensor warm-up handling
+- No smoothing/averaging of readings (raw ADC values can be noisy)
+- sendUptime() is a placeholder name - doesn't actually send uptime, just
+  reads and displays. Consider renaming (e.g. updateReading()) for clarity
+- No unit tests / no persistent logging yet
