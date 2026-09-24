@@ -38,7 +38,7 @@ void loop()
 
 void sendUptime()
 {
-  sensorValue = analogRead(MQ2);
+  sensorValue = analogRead(MQ5);
   Serial.println(sensorValue);
 
   lcd.setCursor(0, 0);
