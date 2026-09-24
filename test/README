@@ -41,3 +41,13 @@ KNOWN LIMITATIONS / NEXT STEPS
 - sendUptime() is a placeholder name - doesn't actually send uptime, just
   reads and displays. Consider renaming (e.g. updateReading()) for clarity
 - No unit tests / no persistent logging yet
+
+## Testing
+
+Added a `testing` branch to simulate sensor behavior without physical hardware:
+- Pushes fake/false air quality data ("gaz detected" / "normal air quality") directly to Firebase Realtime Database to test the read/write logic and the Android app's live data display, without needing the ESP32 connected.
+
+## Next Steps
+
+- Connect the ESP32 to WiFi
+- Read real sensor data and push it online to the Realtime Database
