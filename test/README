@@ -42,6 +42,8 @@ KNOWN LIMITATIONS / NEXT STEPS
   reads and displays. Consider renaming (e.g. updateReading()) for clarity
 - No unit tests / no persistent logging yet
 
+
+
 ## Testing
 
 Added a `testing` branch to simulate sensor behavior without physical hardware:
