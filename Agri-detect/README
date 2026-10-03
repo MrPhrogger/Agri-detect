@@ -1,0 +1,43 @@
+Gas Leak Detection System
+
+An ESP32-based embedded system that monitors air quality and environmental conditions, displaying real-time status on an LCD screen. Built as part of an ongoing IoT project.
+
+Overview
+
+The system reads gas concentration, temperature, and humidity, then cycles the readings on a 16x2 I2C LCD. It's designed to eventually log state changes to Firebase and expose that data through a companion Android app.
+
+Hardware
+
+- ESP32 (NodeMCU-32S)
+- MQ5 gas sensor (analog output)
+- DHT11 temperature and humidity sensor
+- 16x2 I2C LCD (address 0x27)
+
+Wiring
+
+MQ5 analog out - GPIO 34
+DHT11 data - GPIO 4
+LCD SDA - GPIO 21
+LCD SCL - GPIO 22
+
+Current Status
+
+Gas sensor (MQ5) and DHT11 readings are taken every 2 seconds.
+LCD cycles between two screens every 3 seconds:
+- Air Quality: "Normal air quality" / "Gaz detected" (threshold-based on MQ5 reading)
+- Temp / Humidity: live DHT11 readings
+All readings are also printed to Serial (115200 baud) for debugging.
+Project built and managed with PlatformIO.
+
+
+Libraries
+
+marcoschwartz/LiquidCrystal_I2C
+adafruit/DHT sensor library
+adafruit/Adafruit Unified Sensor
+
+Next Steps
+
+Firebase integration: connect the ESP32 to WiFi and push live sensor data (state changes only, not raw continuous values) to Firebase Realtime Database.
+Android app: build out the Android Studio app (Java) to read live data from Firebase and display current air quality status ("Normal Air Quality" / "Gaz Detected") / the temperature and humidity in a simple interface.
+Move WiFi/Firebase credentials out of hardcoded defines into a gitignored config before making the repo public.

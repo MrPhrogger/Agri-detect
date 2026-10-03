@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Greens -->
+    <color name="green_deep">#2E7D6B</color>
+    <color name="green_mint">#A8E6CF</color>
+    <color name="green_soft">#E8F5E9</color>
+
+    <!-- Accents -->
+    <color name="blue_slate">#6C8EA0</color>
+    <color name="brown_warm">#8D6E63</color>
+
+    <!-- Neutrals -->
+    <color name="bg_offwhite">#F5F7F6</color>
+    <color name="card_white">#FFFFFF</color>
+    <color name="text_dark">#1F2937</color>
+    <color name="text_muted">#6B7280</color>
+
+    <!-- Status Colors -->
+    <color name="status_alert">#FF5D4D</color>
+    <color name="status_warning">#FFB547</color>
+</resources>

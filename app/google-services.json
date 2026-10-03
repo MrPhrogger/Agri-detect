@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884143689164",
+    "project_id": "agri-detect-872ec",
+    "storage_bucket": "agri-detect-872ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884143689164:android:e141c313b1eb8ed5dae169",
+        "android_client_info": {
+          "package_name": "com.example.agri_detect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSySYl94yZPqj9wsIVTjupH6Oo8mOoEIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
